@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>爬虫API文档</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .endpoint { margin-bottom: 20px; }
+        .description, .url, .method, .parameters, .response, .errors { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>爬虫API文档</h1>
+
+    <h2>爬取页面</h2>
+
+    <div class="endpoint">
+        <h3>爬取单个页面</h3>
+        <p class="description">传入一个url，传出爬取到并且整理好的json数据。</p>
+        <p class="method"><b>Method:</b> GET</p>
+        <p class="url"><b>URL:</b> /craw_sigle_page</p>
+        <p class="parameters"><b>Parameters:</b> 
+            <br> - url : string, 需要爬取的页面url，不填默认为https://www.leadong.com/ 
+            <!-- <br> - param2 (type): Description -->
+        </p>
+        
+        <p class="response"><b>Response Example:</b> <br>{"title": title,"url":url, "keywords": keywords, "description": description, "body": body_content}</p>
+    </div>
+    <!--
+    <div class="endpoint">
+        <h3>Endpoint 2 Name</h3>
+        <p class="description">Description of what this endpoint does.</p>
+        <p class="method"><b>Method:</b> GET/POST</p>
+        <p class="url"><b>URL:</b> /endpoint2</p>
+        <p class="parameters"><b>Parameters:</b> <br> - param1 (type): Description <br> - param2 (type): Description</p>
+        <p class="response"><b>Response Example:</b> <br> { "key": "value" }</p>
+    </div>
+
+    <h2>Error Codes</h2>
+    <p>Describe common error status codes your API might return, and what they mean.</p>
+    -->
+</body>
+</html>
