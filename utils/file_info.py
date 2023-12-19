@@ -4,9 +4,10 @@ import json
 import re
 import time as t
 from unittest import result
+from secret import prefix
 def traverse_folder(path, root_path, level=1, parent_path=None):
     result = {
-        "Path": os.path.relpath(path, root_path),
+        "Path": prefix +  os.path.relpath(path, root_path),
         "Name": os.path.basename(path),
         "level": level,
         "children": []
@@ -23,7 +24,7 @@ def traverse_folder(path, root_path, level=1, parent_path=None):
             result["children"].append(traverse_folder(item_path, parent_path, level + 1))
         else: # 如果是文件
             result["children"].append({
-                "Path": os.path.relpath(item_path, root_path),
+                "Path": prefix +  os.path.relpath(item_path, root_path),
                 "Name": item,
                 "type": os.path.splitext(item)[1][1:],
                 "level": level + 1,
