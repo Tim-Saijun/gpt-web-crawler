@@ -30,7 +30,7 @@ def get_tree_url():
 @app.route('/<path:filename>.json')
 def send_json_file(filename):
     print(filename)
-    return send_file(filename + '.json')
+    return send_file(filename + '.json', as_attachment=True)
 
 
 if __name__ == '__main__':
