@@ -1,6 +1,3 @@
-from audioop import mul
-import re
-from turtle import st
 import requests
 from bs4 import BeautifulSoup
 
@@ -36,7 +33,7 @@ def recurrent_get_links(url, depth=1, max_count=100):
 base_url = 'https://www.leadong.com'
 start_path = '/'
 start_url = base_url + start_path
-start_url = 'https://www.leadong.com/p/clients.html'
+# start_url = 'https://www.leadong.com/p/clients.html'
 # 获取初始链接列表
 page_links = get_links(start_url)
 print(f"page_links:{page_links}, 共计链接数量🔗:{len(page_links)}")
