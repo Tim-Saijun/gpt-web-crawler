@@ -1,6 +1,7 @@
 /1
-/__pycache__
+__pycache__
 *.txt
 *.json
 *.pyc
 secret.py
+/resources
