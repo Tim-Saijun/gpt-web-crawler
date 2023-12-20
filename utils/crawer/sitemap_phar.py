@@ -55,8 +55,8 @@ def phar_sitemap_url(url): # 爬取sitemap页面，解析出网站结构
         # 解析HTML内容
         soup = BeautifulSoup(response, 'html.parser')
         # print(soup.prettify())
-        with open(r'resources\sites\a.html', 'w',encoding='utf-8') as file:
-            file.write(str(soup.prettify()))
+        # with open(r'resources\sites\a.html', 'w',encoding='utf-8') as file:
+        #     file.write(str(soup.prettify()))
 
         # Locating the main menu within the specified div with id="backstage-bodyArea"
         body_area = soup.find('div', id="backstage-bodyArea")
@@ -79,8 +79,10 @@ def phar_sitemap_url(url): # 爬取sitemap页面，解析出网站结构
         hierarchical_structure_json_in_body_area = json.dumps(hierarchical_structure_in_body_area, indent=4,ensure_ascii=False)
 
         # Print the JSON structure
-        return hierarchical_structure_json_in_body_area
+        return hierarchical_structure_in_body_area,hierarchical_structure_json_in_body_area
         
     
 if __name__ == '__main__':
-    print(phar_sitemap_url(("https://www.jiecang.cn/sitemap.html")))
+    url1 = "https://www.jiecang.cn/sitemap.html"
+    url2 = "https://www.leadong.com/sitemap.html"
+    print(phar_sitemap_url((url2))[0])
