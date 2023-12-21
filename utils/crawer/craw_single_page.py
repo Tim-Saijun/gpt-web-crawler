@@ -1,9 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import requests
-from bs4 import BeautifulSoup
-import json
 import re
 
 def replace_multiple_spaces_with_single(s):
@@ -52,8 +49,8 @@ def craw_single_page(url):
 
         # for content_text in soup.find_all('meta', content=True):
         #     print(content_text.get('content'))
-
-        body_content = soup.body.get_text() if soup.body else ""
+        body_area = soup.find('div', attrs={'id': 'backstage-bodyArea'})
+        body_content = body_area.get_text() if body_area else "N/A"
         body_content = replace_multiple_spaces_with_single(body_content)
         # print(body_content)
 
@@ -67,7 +64,8 @@ def craw_single_page(url):
 
 
 if __name__ == '__main__':
-    url = "https://www.leadong.com/"
-    print(craw_single_page(url))
+    url = "https://www.jiecang.cn/220513140440.html"
+    res = craw_single_page(url)[0]
+    print(res)
 
 
