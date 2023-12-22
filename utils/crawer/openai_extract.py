@@ -1,6 +1,6 @@
 from openai import OpenAI
 from config import openai_config
-from tenacity import retry
+import logging
 client = OpenAI(
     # api_key=os.environ.get("OPENAI_API_KEY"),
     base_url = openai_config["base_url"],
@@ -29,8 +29,8 @@ def openai_extract(meta_info,c_data):
             timeout=120,
         )
     except:
-        print("openai请求失败")
-        return {"N/A"},0
+        logging.warning("openai请求失败")
+        return str({"content":""}),0
     tokens_used = chat_completion.usage.total_tokens if chat_completion.usage is not None else 0
     return chat_completion.choices[0].message.content,tokens_used
 if __name__ == '__main__':
