@@ -1,8 +1,10 @@
+import time
+from turtle import st
 import requests
 from bs4 import BeautifulSoup
 import json
 import re
-
+from .openai_extract import openai_extract
 def replace_multiple_spaces_with_single(s):
     return re.sub(r'\s+', ' ', s)
 
@@ -18,10 +20,10 @@ def check(url):
     else:
         return None
 
-def craw_single_page(url):
+def craw_single_page(url,use_template=False,use_ai=True):
     url = check(url)
     if not url:
-        return [],[]
+        return [],[],0
     response = requests.get(url)
     if response.status_code == 200:
         # 解析HTML内容
@@ -49,18 +51,43 @@ def craw_single_page(url):
 
         # for content_text in soup.find_all('meta', content=True):
         #     print(content_text.get('content'))
-        body_area = soup.find('div', attrs={'id': 'backstage-bodyArea'})
-        body_content = body_area.get_text() if body_area else "N/A"
-        body_content = replace_multiple_spaces_with_single(body_content)
-        # print(body_content)
-
-        page_res = {"title": title,"url":url, "keywords": keywords, "description": description, "body": body_content}
+        if use_template: # 使用焦点建站的模板
+            body_area = soup.find('div', attrs={'id': 'backstage-bodyArea'})
+            body_content = body_area.get_text() if body_area else "N/A"
+            body_content = replace_multiple_spaces_with_single(body_content)
+            # print(body_content)
+        else: # 一般的网站
+            body_content = soup.body.get_text() if soup.body else "N/A"
+            body_content = replace_multiple_spaces_with_single(body_content)
+            # print(body_content)
+        # 使用AI处理
+        token_usage = 0
+        meta_info = f"标题：{title}，关键词：{keywords}，简介：{description}"
+        ai_extract_content,t = openai_extract(meta_info,body_content)
+        token_usage += t
+         # 判断json是否规范
+        status = True
+        time_out = 0
+        while status and time_out<5:
+            try:
+                json.dumps(ai_extract_content)
+                status = False
+            except:
+                ai_extract_content,t = openai_extract(meta_info,body_content)
+                token_usage += t
+                time_out += 1
+        
+            
+        print(ai_extract_content)
+        print("🍎"*50)
+        # 结算
+        page_res = {"title": title,"url":url, "keywords": keywords, "description": description, "body": body_content,"ai_extract_content":ai_extract_content}
         json_str = json.dumps(page_res, ensure_ascii=False)
-        return page_res,json_str
+        return page_res,json_str,token_usage
 
     else:
         print(url+"请求失败，状态码：", response.status_code)
-        return ""
+        return {},{},0
 
 
 if __name__ == '__main__':

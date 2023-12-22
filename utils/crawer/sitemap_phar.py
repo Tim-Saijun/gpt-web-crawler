@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import json
 import requests
-from selenium_get_page import browser_open
+from .selenium_get_page import browser_open
 
 # Function to recursively extract the site structure
 def extract_structure(element):
