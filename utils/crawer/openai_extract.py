@@ -1,5 +1,6 @@
 from openai import OpenAI
 from config import openai_config
+from tenacity import retry
 client = OpenAI(
     # api_key=os.environ.get("OPENAI_API_KEY"),
     base_url = openai_config["base_url"],
@@ -10,17 +11,26 @@ def openai_extract(meta_info,c_data):
     json_format = str({"prodName":" ","prodBrief": " ","productKeyword": " ","productCategory": " ","ProductFeatures": " ","prodAttribute": " ","productText": " ","prodImg": " "})
     json_format1 = str({"content":""})
     p3 = f"下面给出的文本是来自一个网页，可能是产品描述或其它内容。请根据{meta_info}判断，如果是产品页，则提取产品信息填充json{json_format},最终返回此json即可；如果不是产品页面，则提取相关的正文内容，填充json{json_format1}。无论如何，最后返回的一定是json格式，要处理的文本如下："
-    prompt = p3
+    p4 = f"下面给出的文本是来自一个网页，可能是产品描述或其它内容。请根据{meta_info}判断，如果是产品页，则提取产品信息填充json{json_format},最终返回此json即可；如果不是产品页面，则提取相关的正文内容，填充json{json_format1}。无论如何，最后返回的一定是标准的json格式，不需要额外的解释或代码渲染。要处理的文本如下："
+    prompt = p4
     content = prompt + c_data
-    chat_completion = client.chat.completions.create(
-        messages=[
-            {
-                "role": "user",
-                "content": content,
-            }
-        ],
-        model="gpt-3.5-turbo-1106",
-    )
+    try:
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": content,
+                }
+            ],
+            # model="gpt-3.5-turbo-1106",
+            model="gpt-4-1106-preview",
+            response_format={ "type": "json_object" },
+            temperature=0,
+            timeout=120,
+        )
+    except:
+        print("openai请求失败")
+        return {"N/A"},0
     tokens_used = chat_completion.usage.total_tokens if chat_completion.usage is not None else 0
     return chat_completion.choices[0].message.content,tokens_used
 if __name__ == '__main__':

@@ -14,7 +14,7 @@ def craw_sigle_page_() -> str:  # 修改返回类型为str
     result = craw_single_page(url)[1]
     if isinstance(result, list):
         return result[0]
-    return result
+    return result[0]
 
 if __name__ == '__main__':
     app.run(debug=True,host="0.0.0.0")

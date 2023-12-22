@@ -1,5 +1,6 @@
+import json
 import config
-import utils.crawer
+from utils.crawer import phar_sitemap_url, integrate_sitemap_with_details
 # 获取原始站点地图
 url = 'https://www.jiecang.cn/sitemap.html'
 original_sitemap = phar_sitemap_url(url)[0]
