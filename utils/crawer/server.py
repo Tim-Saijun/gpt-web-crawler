@@ -11,9 +11,9 @@ def api_docs():
 def craw_sigle_page_() -> str:  # 修改返回类型为str
     default_url = "https://www.leadong.com/"
     url = request.args.get('url', default_url)  # 'default_url' 是如果没有提供时的默认值
-    result = craw_single_page(url)
+    result = craw_single_page(url)[1]
     if isinstance(result, list):
-        return result[1]
+        return result[0]
     return result
 
 if __name__ == '__main__':

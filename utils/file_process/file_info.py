@@ -4,7 +4,7 @@ import json
 import re
 import time as t
 from unittest import result
-from secret import prefix
+from config import prefix
 def traverse_folder(path, root_path, level=1, parent_path=None):
     result = {
         "Path": prefix +  os.path.relpath(path, root_path),

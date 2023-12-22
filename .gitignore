@@ -3,5 +3,5 @@ __pycache__
 *.txt
 *.json
 *.pyc
-secret.py
+config.py
 /resources
