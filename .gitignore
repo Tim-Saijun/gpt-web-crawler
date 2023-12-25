@@ -5,3 +5,7 @@ __pycache__
 *.pyc
 config.py
 /resources
+/playground
+/node_modules
+screenshot
+```
