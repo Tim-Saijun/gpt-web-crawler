@@ -1,10 +1,11 @@
 import time
-from turtle import st
 import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import logging
 from .openai_extract import openai_extract
+from .get_screenshot import get_screenshot
 def replace_multiple_spaces_with_single(s):
     return re.sub(r'\s+', ' ', s)
 
@@ -20,7 +21,7 @@ def check(url):
     else:
         return None
 
-def craw_single_page(url,use_template=False,use_ai=True):
+def craw_single_page(url,use_template=False,use_ai=False):
     url = check(url)
     if not url:
         return [],[],0
@@ -60,28 +61,41 @@ def craw_single_page(url,use_template=False,use_ai=True):
             body_content = soup.body.get_text() if soup.body else "N/A"
             body_content = replace_multiple_spaces_with_single(body_content)
             # print(body_content)
+        if use_ai:
         # 使用AI处理
-        token_usage = 0
-        meta_info = f"标题：{title}，关键词：{keywords}，简介：{description}"
-        ai_extract_content,t = openai_extract(meta_info,body_content)
-        token_usage += t
-         # 判断json是否规范
-        status = True
-        time_out = 0
-        while status and time_out<5:
-            try:
-                json.dumps(ai_extract_content)
-                status = False
-            except:
-                ai_extract_content,t = openai_extract(meta_info,body_content)
-                token_usage += t
-                time_out += 1
-        
+            token_usage = 0
+            meta_info = f"标题：{title}，关键词：{keywords}，简介：{description}"
+            ai_extract_content,t = openai_extract(meta_info,body_content)
+            token_usage += t
+            # 判断json是否规范
+            status = True
+            time_out = 0
+            while status and time_out<5:
+                try:
+                    json.dumps(ai_extract_content)
+                    status = False
+                except:
+                    ai_extract_content,t = openai_extract(meta_info,body_content)
+                    token_usage += t
+                    time_out += 1
             
-        print(ai_extract_content)
-        print("🍎"*50)
+                
+            print(ai_extract_content)
+            print("🍎"*50)
+        else:
+            ai_extract_content = {}
+            token_usage = 0
+        
+        # 提取网页截图
+        # TODO: 多线程处理
+        try:
+            screenshot_path = get_screenshot(url)
+        except Exception as e:
+            logging.error(f"Error taking screenshot: {url}\n {e}")
+            screenshot_path = None        
+        logging.info(f"Screenshot saved to: {screenshot_path}")
         # 结算
-        page_res = {"title": title,"url":url, "keywords": keywords, "description": description, "body": body_content,"ai_extract_content":ai_extract_content}
+        page_res = {"title": title,"url":url, "keywords": keywords, "description": description, "body": body_content,"ai_extract_content":ai_extract_content,"screenshot_path":screenshot_path}
         json_str = json.dumps(page_res, ensure_ascii=False)
         return page_res,json_str,token_usage
 

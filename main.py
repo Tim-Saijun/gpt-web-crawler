@@ -1,3 +1,8 @@
+import logging
+import colorlog
+import selenium
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 import json
 import config
 from utils.crawer import phar_sitemap_url, integrate_sitemap_with_details
