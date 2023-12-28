@@ -18,3 +18,11 @@ class NoobItem(scrapy.Item):
     keywords = scrapy.Field()
     description = scrapy.Field()
     body = scrapy.Field()
+
+class CatItem(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    keywords = scrapy.Field()
+    description = scrapy.Field()
+    body = scrapy.Field()
+    screenshot_path = scrapy.Field()
