@@ -11,7 +11,7 @@ class WebcrawerItem(scrapy.Item):
     # name = scrapy.Field()
     pass
 
-class MyItem(scrapy.Item):
+class NoobItem(scrapy.Item):
     # Define the fields for your item here like:
     title = scrapy.Field()
     url = scrapy.Field()
