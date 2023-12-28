@@ -26,3 +26,11 @@ class CatItem(scrapy.Item):
     description = scrapy.Field()
     body = scrapy.Field()
     screenshot_path = scrapy.Field()
+    
+class ProItem(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    keywords = scrapy.Field()
+    description = scrapy.Field()
+    body = scrapy.Field()
+    ai_extract_content = scrapy.Field()
