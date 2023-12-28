@@ -30,8 +30,8 @@ class NoobSpider(CrawlSpider):
     start_urls = []
     allowed_domains = []
     rules = ()
-    def __init__(self, start_urls="https://www.jiecang.cn/",
-                     extract_rules=r'/pd.*',
+    def __init__(self, start_urls=None,
+                     extract_rules=None,
                      *args, **kwargs):
             """
             Initialize the NoobSpider class.
