@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools","scrapy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gpt-web-crawler"
+version = "0.0.1"
+authors = [
+  { name= "Tim Saijun", email = "code@zair.top"},
+]
+description = "A web crawler for GPTs to build knowledge bases"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["gpt", "crawler", "website", "knowledge bases", "AI", "language models", "gpt-web-crawler"]
+dependencies = [
+    "beautifulsoup4 >= 4.10.0",
+    "colorlog >= 6.8.0",
+    "openai >= 1.6.0",
+    "Pillow >= 4.0.0",
+    "requests >= 2.26.0",
+    "Scrapy >= 2.11.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Tim-Saijun/gpt-web-crawler"
+"Documentation" = "https://github.com/Tim-Saijun/gpt-web-crawler/blob/main/README.MD"
+
+[tool.setuptools]
+packages = ["gpt_web_crawler"]
