@@ -1,3 +1,5 @@
+[![PyPI - Version](https://img.shields.io/pypi/v/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Tim-Saijun/gpt-web-crawler/python-publish.yml)](https://github.com/Tim-Saijun/gpt-web-crawler/actions/workflows/python-publish.yml)[![PyPI - License](https://img.shields.io/pypi/l/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/)   [简体中文](README-Zh.md)    [English](README.md)
+
 [简体中文](README-Zh.md)    [English](README.md)
 ## 介绍
 GPT-Web-Crawler是一个基于python和puppeteer的网络爬虫，可以爬取网页并从网页中提取内容（包括网页的标题，url，关键词，描述，所有文本内容，所有图片和截图）。它使用起来非常简单，只需要几行代码就可以用来爬取网页并从网页中提取内容，非常适合对网络爬取不熟悉并希望使用网络爬取从网页中提取内容的人。
@@ -25,10 +27,10 @@ run_spider(NoobSpider,
 
 | 爬虫类型   | 描述                                            | 返回内容                                             |
 |------------|------------------------------------------------|------------------------------------------------------|
-| NoobSpider | 基本的网页抓取                                  | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 |
-| CatSpider  | 带有截图的网页抓取                              | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- screenshot_path：截图路径 |
-| ProSpider  | 使用 AI 提取内容的网页抓取                      | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- ai_extract_content：GPT 提取的正文文本 |
-| LionSpider | 提取所有图片的网页抓取                          | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- directory：网页上所有图片的目录     |
+| NoobSpider | 抓取基本的网页信息                              | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 |
+| CatSpider  | 抓取带有截图的网页信息                          | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- screenshot_path：截图路径 |
+| ProSpider  | 抓取基本信息的同时使用 AI 提取内容              | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- ai_extract_content：GPT 提取的正文文本 |
+| LionSpider | 抓取基本信息的同时提取所有图片                  | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- directory：网页上所有图片的目录     |
 
 ### Cat Spider
 Cat spider是一个可以对网页进行截图的爬虫。它基于Noob spider，并使用puppeteer模拟浏览器操作对整个网页进行截图并将其保存为图像。 所以当你使用Cat spider时，你需要先安装puppeteer。

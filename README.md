@@ -1,5 +1,5 @@
+[![PyPI - Version](https://img.shields.io/pypi/v/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Tim-Saijun/gpt-web-crawler/python-publish.yml)](https://github.com/Tim-Saijun/gpt-web-crawler/actions/workflows/python-publish.yml)[![PyPI - License](https://img.shields.io/pypi/l/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/)   [简体中文](README-Zh.md)    [English](README.md)
 
-[简体中文](README-Zh.md)    [English](README.md)
 ## Introduction
 GPT-Web-Crawler is a web crawler based on python and puppeteer. It can crawl web pages and extract content (including WebPages' title,url,keywords,description,all text content,all images and screenshot) from web pages. It is very easy to use and can be used to crawl web pages and extract content from web pages in a few lines of code. It is very suitable for people who are not familiar with web crawling and want to use web crawling to extract content from web pages.
 ![Crawler Working](images/crawler.gif)
