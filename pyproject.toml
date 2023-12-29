@@ -1,10 +1,10 @@
 [build-system]
-requires = ["setuptools","scrapy"]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "gpt-web-crawler"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name= "Tim Saijun", email = "code@zair.top"},
 ]
@@ -32,4 +32,4 @@ dependencies = [
 "Documentation" = "https://github.com/Tim-Saijun/gpt-web-crawler/blob/main/README.MD"
 
 [tool.setuptools]
-packages = ["gpt_web_crawler"]
+packages = ["gpt_web_crawler","gpt_web_crawler.webcrawer","gpt_web_crawler.webcrawer.spiders","gpt_web_crawler.webcrawer.tools"]
