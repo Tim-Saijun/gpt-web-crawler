@@ -65,7 +65,7 @@ class NoobSpider(CrawlSpider):
                 # Rule(LinkExtractor(deny=[r'javascript:;',r'/pd.*']), follow=True),
                 # # 处理符合特定模式的链接
                 # Rule(LinkExtractor(allow=r'/pd.*'), callback="parse_item",follow=True),
-                Rule(LinkExtractor(allow=r'/pd.*'), callback="parse_item",follow=True),
+                Rule(LinkExtractor(allow=self.extract_rules_list), callback="parse_item",follow=True),
                 Rule(LinkExtractor(), follow=True),
             )
             self._compile_rules() 

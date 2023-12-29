@@ -4,18 +4,19 @@
     - keywords
     - description
     - body
-    - screenshot_path
+    - image_path
 """
 
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
-from ..items import CatItem  # Import your Scrapy item here
-from ..get_screenshot import get_screenshot
+from ..items import LionItem
 import re
 import os
 from bs4 import BeautifulSoup
+import hashlib
 import logging
 import colorlog
+from webcrawer.pipelines import CustomImagesPipeline
 
 # Log 配置
 fmt = "{asctime} {log_color}{levelname} {name}: {message}"
@@ -28,8 +29,8 @@ log = logging.getLogger(name="MySpider")
 def replace_multiple_spaces_with_single(s):
     return re.sub(r'\s+', ' ', s)
 
-class CatSpider(CrawlSpider):
-    name = 'cat'
+class LionSpider(CrawlSpider):
+    name = 'lion'
     start_urls = []
     allowed_domains = []
     rules = ()
@@ -46,7 +47,7 @@ class CatSpider(CrawlSpider):
             Raises:
                 ValueError: If no start_urls or extract_rules are provided.
             """
-            super(CatSpider, self).__init__(*args, **kwargs)
+            super(LionSpider, self).__init__(*args, **kwargs)
             if start_urls:
                 self.start_urls = start_urls.split(',')
             else:
@@ -62,7 +63,7 @@ class CatSpider(CrawlSpider):
                 log.error("No extract_rules provided!")
                 raise ValueError("No extract_rules provided!")
             self.rules = (
-                Rule(LinkExtractor(allow=self.extract_rules_list), callback="parse_item",follow=True),
+                Rule(LinkExtractor(allow= self.extract_rules_list), callback="parse_item",follow=True),
                 Rule(LinkExtractor(), follow=True),
             )
             self._compile_rules() 
@@ -71,7 +72,7 @@ class CatSpider(CrawlSpider):
             log.info("allowed_domains: %s", self.allowed_domains)
 
     def parse_item(self, response):
-        item = CatItem()
+        item = LionItem()
 
         item['title'] = response.xpath('//title/text()').get() or "N/A"
         item['url'] = response.url
@@ -88,8 +89,11 @@ class CatSpider(CrawlSpider):
         item['body'] = body_content if body_content else "N/A"
         # log.info("body_content: %s", body_content)
         
-        # 保存截图到文件
-        screenshot_filename = get_screenshot(response.url)
-        item['screenshot_path'] = screenshot_filename
+        # 
+        # item['image_urls'] = response.css('img::attr(src)').getall() #原始图片链接，可能是相对路径
+        item['image_urls'] = [response.urljoin(src) for src in response.css('img::attr(src)').getall()] # 转换为绝对链接
+        # 创建以 URL 命名的目录
+        directory = hashlib.sha1(response.url.encode('utf-8')).hexdigest()
+        item['directory'] = directory
         yield item
         

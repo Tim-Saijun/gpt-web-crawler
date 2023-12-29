@@ -34,3 +34,13 @@ class ProItem(scrapy.Item):
     description = scrapy.Field()
     body = scrapy.Field()
     ai_extract_content = scrapy.Field()
+    
+class LionItem(scrapy.Item):
+    title = scrapy.Field()
+    url = scrapy.Field()
+    keywords = scrapy.Field()
+    description = scrapy.Field()
+    body = scrapy.Field()
+    image_urls = scrapy.Field()
+    images = scrapy.Field()
+    directory = scrapy.Field()

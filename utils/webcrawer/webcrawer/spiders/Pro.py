@@ -61,7 +61,7 @@ class ProSpider(CrawlSpider):
                 log.error("No extract_rules provided!")
                 raise ValueError("No extract_rules provided!")
             self.rules = (
-                Rule(LinkExtractor(allow=r'/pd.*'), callback="parse_item",follow=True),
+                Rule(LinkExtractor(allow=self.extract_rules_list), callback="parse_item",follow=True),
                 Rule(LinkExtractor(), follow=True),
             )
             self._compile_rules() 

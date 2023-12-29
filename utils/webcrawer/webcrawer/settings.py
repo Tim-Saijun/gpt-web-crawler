@@ -13,9 +13,10 @@ SPIDER_MODULES = ["webcrawer.spiders"]
 NEWSPIDER_MODULE = "webcrawer.spiders"
 
 ############### 自定义设置
-CLOSESPIDER_PAGECOUNT = 30  # 最大页面数量
+CLOSESPIDER_PAGECOUNT = 10  # 最大页面数量
 # DOWNLOAD_DELAY = 3
-
+ITEM_PIPELINES =  {'webcrawer.pipelines.CustomImagesPipeline': 1}
+IMAGES_STORE = 'images' # 设置图片存储路径
 ###############
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
