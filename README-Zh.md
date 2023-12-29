@@ -1,6 +1,5 @@
-[![PyPI - Version](https://img.shields.io/pypi/v/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Tim-Saijun/gpt-web-crawler/python-publish.yml)](https://github.com/Tim-Saijun/gpt-web-crawler/actions/workflows/python-publish.yml)[![PyPI - License](https://img.shields.io/pypi/l/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/)   [简体中文](README-Zh.md)    [English](README.md)
+[![PyPI - Version](https://img.shields.io/pypi/v/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/) [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Tim-Saijun/gpt-web-crawler/python-publish.yml)](https://github.com/Tim-Saijun/gpt-web-crawler/actions/workflows/python-publish.yml)[![PyPI - License](https://img.shields.io/pypi/l/gpt-web-crawler)](https://pypi.org/project/gpt-web-crawler/)   [![Static Badge](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-8A2BE2)](README-Zh.md) [![Static Badge](https://img.shields.io/badge/English-blue)](README.md)
 
-[简体中文](README-Zh.md)    [English](README.md)
 ## 介绍
 GPT-Web-Crawler是一个基于python和puppeteer的网络爬虫，可以爬取网页并从网页中提取内容（包括网页的标题，url，关键词，描述，所有文本内容，所有图片和截图）。它使用起来非常简单，只需要几行代码就可以用来爬取网页并从网页中提取内容，非常适合对网络爬取不熟悉并希望使用网络爬取从网页中提取内容的人。
 ![爬虫工作](images/crawler.gif)
