@@ -24,13 +24,14 @@ run_spider(NoobSpider,
 ```
 
 ## Spiders
+In the above code, the NoobSpider is used. There are four spiders in the package, which are NoobSpider, CatSpider, ProSpider and LionSpider. They are different in the content they can extract from the web page. The following table shows the differences between them.
 
-| Spider Type | Description                                      |
-|-------------|--------------------------------------------------|
-| NoobSpider  | Basic web page scraping                          |
-| CatSpider   | Web page scraping with screenshots               |
-| ProSpider   | Web page scraping with AI-extracted content      |
-| LionSpider  | Web page scraping with all images extracted      |
+| Spider Type | Description                                      | Return Content                                   |
+|-------------|--------------------------------------------------|--------------------------------------------------|
+| NoobSpider  | Basic web page scraping                          |- titile <br>- url<br>- keywords<br>- description<br>- body :all text content of web page|
+| CatSpider   | Web page scraping with screenshots               |- titile <br>- url<br>- keywords<br>- description<br>- body :all text content of web page <br>- screenshot_path|
+| ProSpider   | Web page scraping with AI-extracted content      |- titile <br>- url<br>- keywords<br>- description<br>- body :all text content of web page <br>- ai_extract_content : gpt's extraction of body text|
+| LionSpider  | Web page scraping with all images extracted      |- titile <br>- url<br>- keywords<br>- description<br>- body :all text content of web page <br>- directory : the directory of all pics on web page|
 
 ### Cat Spider
 Cat spider is a spider that can take screenshots of web pages. It is based on the Noob spider and uses puppeteer to simulate browser operations to take screenshots of the entire web page and save it as an image.
@@ -41,3 +42,4 @@ npm install puppeteer
 
 ## TODO
 - [ ] 支持无需配置config.py
+- [ ] 爬虫更多自定义内容

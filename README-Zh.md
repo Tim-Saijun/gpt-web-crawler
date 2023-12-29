@@ -21,12 +21,13 @@ run_spider(NoobSpider,
            extract_rules= r'.*\.html' )
 ```
 ## 爬虫
-| 爬虫类型	   | 描述                                             |
-|-------------|--------------------------------------------------|
-| NoobSpider  |	基础网页抓取                                       |
-| CatSpider   |带有屏幕截图的网页抓取                               |
-| ProSpider   |带有AI提取内容的网页抓取                             |
-| LionSpider  |	带有所有图片提取的网页抓取                          |
+在上面的代码中，使用了NoobSpider。 此包中共有四种爬虫，它们可以从网页中提取的内容有所不同。 下表显示了它们之间的差异。
+| 爬虫类型   | 描述                                            | 返回内容                                             |
+|------------|------------------------------------------------|------------------------------------------------------|
+| NoobSpider | 基本的网页抓取                                  | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 |
+| CatSpider  | 带有截图的网页抓取                              | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- screenshot_path：截图路径 |
+| ProSpider  | 使用 AI 提取内容的网页抓取                      | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- ai_extract_content：GPT 提取的正文文本 |
+| LionSpider | 提取所有图片的网页抓取                          | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- directory：网页上所有图片的目录     |
 ### Cat Spider
 Cat spider是一个可以对网页进行截图的爬虫。它基于Noob spider，并使用puppeteer模拟浏览器操作对整个网页进行截图并将其保存为图像。 所以当你使用Cat spider时，你需要先安装puppeteer。
 ```bash
