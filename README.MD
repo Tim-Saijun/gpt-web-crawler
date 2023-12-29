@@ -8,7 +8,7 @@ Step1. Install the package.
 ```bash
 pip install gpt-web-crawler
 ```
-Step2. Copy [config_template.py](config_template.py) and rename it to config.py. Then, edit the config.py file to configure the openai api key and other settings, if you need use ProSpider to help you extract content from web pages.
+Step2. Copy [config_template.py](config_template.py) and rename it to config.py. Then, edit the config.py file to config the openai api key and other settings, if you need use ProSpider to help you extract content from web pages. If you don't need to use ai help you extract content from web pages, **you can keep the config.py file unchanged**.
 
 Step3. Run the following code to start a spider.
 ```python
