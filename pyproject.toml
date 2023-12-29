@@ -29,7 +29,7 @@ dependencies = [
 
 [project.urls]
 "Homepage" = "https://github.com/Tim-Saijun/gpt-web-crawler"
-"Documentation" = "https://github.com/Tim-Saijun/gpt-web-crawler/blob/main/README.MD"
+"Documentation" = "https://tim-saijun.github.io/gpt-web-crawler/"
 
 [tool.setuptools]
 packages = ["gpt_web_crawler","gpt_web_crawler.webcrawer","gpt_web_crawler.webcrawer.spiders","gpt_web_crawler.webcrawer.tools"]
