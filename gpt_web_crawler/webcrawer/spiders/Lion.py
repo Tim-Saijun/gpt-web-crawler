@@ -16,7 +16,7 @@ from bs4 import BeautifulSoup
 import hashlib
 import logging
 import colorlog
-from webcrawer.pipelines import CustomImagesPipeline
+# from webcrawer.pipelines import CustomImagesPipeline
 
 # Log 配置
 fmt = "{asctime} {log_color}{levelname} {name}: {message}"
