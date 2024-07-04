@@ -1,0 +1,6 @@
+Scrapy
+beautifulsoup4
+colorlog
+openai
+requests
+Pillow
