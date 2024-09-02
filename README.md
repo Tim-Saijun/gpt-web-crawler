@@ -35,7 +35,7 @@ In the above code, the NoobSpider is used. There are four spiders in the package
 
 ### Cat Spider
 Cat spider is a spider that can take screenshots of web pages. It is based on the Noob spider and uses puppeteer to simulate browser operations to take screenshots of the entire web page and save it as an image.
-So when you use the Cat spider, you need to install puppeteer first.
+So when you use the Cat spider, you need to install puppeteer first.You can refer to [this answer](https://github.com/Tim-Saijun/gpt-web-crawler/commit/dd4edfe83209026a0e74dae8b9b3e6d5d9b9d90c#commitcomment-146072110) to install npm, and then use the following command to install puppeteer:
 ```bash
 npm install puppeteer
 ```
