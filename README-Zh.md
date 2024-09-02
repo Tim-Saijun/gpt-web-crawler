@@ -32,7 +32,7 @@ run_spider(NoobSpider,
 | LionSpider | 抓取基本信息的同时提取所有图片                  | - title <br>- URL <br>- keywords <br>- description <br>- body ：网页的所有文本内容 <br>- directory：网页上所有图片的目录     |
 
 ### Cat Spider
-Cat spider是一个可以对网页进行截图的爬虫。它基于Noob spider，并使用puppeteer模拟浏览器操作对整个网页进行截图并将其保存为图像。 所以当你使用Cat spider时，你需要先安装puppeteer。
+Cat spider是一个可以对网页进行截图的爬虫。它基于Noob spider，并使用puppeteer模拟浏览器操作对整个网页进行截图并将其保存为图像。 所以当你使用Cat spider时，你需要先安装puppeteer。可以先参照[此回答](https://github.com/Tim-Saijun/gpt-web-crawler/commit/dd4edfe83209026a0e74dae8b9b3e6d5d9b9d90c#commitcomment-146072110)安装npm后，再使用以下命令安装puppeteer：
 ```bash
 npm install puppeteer
 ```
